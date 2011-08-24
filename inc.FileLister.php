@@ -7,8 +7,20 @@
 /**
  * FileLister
  *
- * class description: This class is able to list folders and files when pointed to the RootFolder. Based on the request it will be able to return any number of data pairs
+ * class description: This class is able to list folders and files when pointed to the RootFolder. Based on the requestt will be able to return any number of data pairs
  * Usage
+ 	$gallery = new FileLister;
+	//set a folder and check if everything is fine
+	if($gallery->setFolder('../scanFolder/'))
+	{
+		//sets a folder and returns a boolean if there is no folder
+		$gallery->EXTENSIONS = array("txt", "gif");//setup extension
+		$galleryArray = $gallery->getFolderList(true);
+		$contentArray = $gallery->getContent($galleryArray[0]['link']);
+		echo $gallery->makeLinks($galleryArray[0], 'someClass');
+		print_r($galleryArray);
+		print_r($contentArray);
+	}
  * 
  * @author Milos Veljkovic
  */
@@ -18,7 +30,7 @@ class FileLister {
 	var $RootFolder; //set by the function call
 	var $FolderListArr; //list of folders
 	var $FolderList; //list of folders and names in a multidimensional array
-	var $EXTENSIONS = array("jpg", "jpeg", "png", "gif");//default file array can be moded to show something else
+	var $EXTENSIONS = array("jpg", "jpeg", "png", "gif");//default file array can be changed to show something else
 	//var $CurrentPage = $this->getPage($_SERVER['PHP_SELF']);
 	//function to list all the files in the folder
 	public function getFolderList($getSub=false)
