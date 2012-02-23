@@ -31,7 +31,6 @@ class FileLister {
 	var $FolderListArr; //list of folders
 	var $FolderList; //list of folders and names in a multidimensional array
 	var $EXTENSIONS = array("jpg", "jpeg", "png", "gif");//default file array can be changed to show something else
-	//var $CurrentPage = $this->getPage($_SERVER['PHP_SELF']);
 	//function to list all the files in the folder
 	public function getFolderList($getSub=false)
 	{
@@ -60,7 +59,7 @@ class FileLister {
 			{
 				if($val)
 				{
-					//look for titile file if there is on to set the name of the folder/link
+					//look for title file if there is one to set the name of the folder/link
 					if (is_file($this->RootFolder . "/" . $this->FolderListArr[$key] . "/title.txt"))
 					{
 						$FolderName = file_get_contents($this->RootFolder . "/" . $this->FolderListArr[$key] . "/title.txt");
@@ -82,7 +81,7 @@ class FileLister {
 				}
 			}
 		}
-		//print_r($this->FolderList);
+		//return the folder list
 		return $this->FolderList;
 	}
 	public function getContent($Folder)
@@ -159,5 +158,4 @@ class FileLister {
 }
 
 ////////end class/////////////////
-//set the values
 ?>
